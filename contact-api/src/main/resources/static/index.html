@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Contact List UI</title>
+</head>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.css" />
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.27/angular.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.js"></script>
+<script
+	src="js/app.js"></script>
+<script
+	src="js/controller/HomeController.js"></script>
+<script
+	src="js/controller/AboutController.js"></script>
+	
+<body ng-app="contact">
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand" ui-sref="#">AngularUI Router</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a ui-sref="home">Home</a></li>
+			<li><a ui-sref="about">About</a></li>
+		</ul>
+	</nav>
+	<div class="container">
+		<div ui-view></div>
+	</div>
+</body>
+</html>
