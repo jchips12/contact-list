@@ -1,10 +1,12 @@
-(function() {
+(function(angular) {
 	
+	'use strict';
+
 	var AboutController = function($scope) {
-		
+
 	};
-	AboutController.$inject = ['$scope'];
 	
-	var module = angular.module('contact');
-	module.controller('aboutCntrl', AboutController);
-})();
+	AboutController.$inject = ['$scope'];
+	angular.module('contact.controllers').controller('aboutCntrl', AboutController);
+	
+})(angular);

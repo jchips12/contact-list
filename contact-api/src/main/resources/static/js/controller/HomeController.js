@@ -1,6 +1,10 @@
-(function() {
-	var module = angular.module('contact');
-	module.controller('homeCntrl', function($scope, $http) {
+(function(angular) {
+	
+	'use strict';
+	
+	var HomeController = function($scope, $http) {
+		
+		$scope.person = {};
 		$http({
 			method : 'GET',
 			url : '/person/1'
@@ -11,5 +15,11 @@
 			$scope.status = response.status;
 			$scope.error = response.data;
 		});
-	});
-})();
+		$scope.person.personId = 1234567890;
+		
+	}
+	
+	HomeController.$inject = ['$scope', '$http'];
+	angular.module('contact.controllers').controller('homeCntrl', HomeController);
+	
+})(angular);
