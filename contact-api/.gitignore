@@ -1,7 +1,10 @@
-.gradle/
-.settings/
-bin/
-gradle/
-.classpath
-.project
-.springBeans
+.gradle*
+.settings*
+bin*
+gradle*
+.classpath*
+.project*
+.springBeans*
+bower_components*
+src/main/resources/static/css/lib*
+src/main/resources/static/js/lib*

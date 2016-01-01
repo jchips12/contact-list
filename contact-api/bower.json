@@ -1,0 +1,67 @@
+{
+	"name": "contact-api",
+	"homepage": "https://github.com/jchips12/contact-list",
+	"authors": [
+		"JC Hipolito <jchips12@gmail.com>"
+	],
+	"description": "",
+	"main": "",
+	"moduleType": [
+		
+	],
+	"license": "MIT",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"angular": "1.4.8",
+		"bootstrap": "3.3.6",
+		"jquery": "2.1.4",
+		"angular-ui-router": "0.2.15"
+	},
+	"install": {
+		"path": {
+			"js": "src/main/resources/static/js/lib",
+			"css": "src/main/resources/static/css/lib",
+			"/[sc|le]ss$/": "src/main/resources/static/css/lib"
+		},
+		"sources": {
+			"angular": {
+				"mapping": [
+					{
+						"bower_components/angular/angular.js": "angular.js"
+					}
+				]
+			},
+			"angular-ui-router": {
+				"mapping": [
+					{
+						"bower_components/angular-ui-router/release/angular-ui-router.js": "angular-ui-router.js"
+					}
+				]
+			},
+			"bootstrap": {
+				"mapping": [
+					{
+						"bower_components/bootstrap/dist/js/bootstrap.js": "bootstrap.js"
+					},
+					{
+						"bower_components/bootstrap/dist/css/bootstrap.css": "bootstrap.css"
+					}
+				]
+			},
+			"jquery": {
+				"mapping": [
+					{
+						"bower_components/jquery/dist/jquery.js": "jquery.js"
+					}
+				]
+			}
+		}
+	}
+}
