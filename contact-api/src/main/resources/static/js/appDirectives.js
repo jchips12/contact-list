@@ -8,21 +8,20 @@
 		numeric.require = 'ngModel';
 		numeric.restrict = 'A';
 		numeric.link = function(scope, element, attr, ctrl) {
-
+			
 			var formatTel = function(value) {
 				if (typeof value === 'undefined') {
 					return '';
 				}
+				value = value.toString().replace(/[^0-9]/g, '');
 				var returnVal = '';
 				switch (value.length) {
 				case 0:
 					break;
 				case 1:
 				case 2:
-					returnVal = "(" + value.slice(0, value.length);
-					break;
 				case 3:
-					returnVal = "(" + value.slice(0, 3) + ")";
+					returnVal = "(" + value.slice(0, value.length);
 					break;
 				case 4:
 				case 5:
@@ -40,24 +39,34 @@
 				}
 				return returnVal;
 			};
-
-			ctrl.$formatters.push(formatTel);
+			
+			ctrl.$formatters.push(function(modelValue) {
+				if (typeof modelValue === 'undefined' || modelValue === null) {
+					return null;
+				}
+				if(modelValue.toString().length > 10) {
+					ctrl.$setViewValue(formatTel(modelValue));
+					ctrl.$render();
+				}
+				return formatTel(modelValue);
+			});
 
 			ctrl.$parsers.push(function(viewValue) {
 				if (typeof viewValue === 'undefined' || viewValue === null) {
-					return '';
-				} else {
-					return viewValue.toString().replace(/[^0-9]/g, '');
+					return null;
 				}
+				if(viewValue !== formatTel(viewValue)) {
+					ctrl.$setViewValue(formatTel(viewValue));
+					ctrl.$render();
+				}
+				return viewValue.toString().replace(/[^0-9]/g, '').slice(0,10);
 			});
 
-			$(element).on('keyup', function() {
-				ctrl.$setViewValue(formatTel(ctrl.$modelValue));
-				ctrl.$render();
-			});
-			
 			scope.$watch(attr.ngModel, function(newVal, oldVal) {
-				ctrl.$setViewValue(formatTel(ctrl.$modelValue));
+				if (typeof newVal === 'undefined' || newVal === null ) {
+					return null;
+				}
+				ctrl.$setViewValue(formatTel(newVal));
 				ctrl.$render();
 			}, true);
 		}
